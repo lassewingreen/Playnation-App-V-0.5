@@ -8,17 +8,17 @@
 
 #import "PNCompaniesTableViewController.h"
 
-#import "UIImageView+AFNetworking.h"
 
-#import "AFNetworking.h"
+
+
 
 #import "CoreData+MagicalRecord.h"
 
 #import "NSDictionary+LowercaseDicionary.h"
 
-#import "Companies.h"
+//#import "Companies.h"
 
-#import "Companies+safeSetValuesKeysWithDictionary.h"
+//#import "Companies+safeSetValuesKeysWithDictionary.h"
 
 @interface PNCompaniesTableViewController ()
 //{
@@ -159,29 +159,32 @@
 //            NSString *playerName = [[company objectForKey:@"player"] objectForKey:@"name"];
             
             //Check if we already saved this shot...
-            Companies *existingEntity = [Companies MR_findFirstByAttribute:@"id_company" withValue:idCompany];
+            
+            
+            //Companies *existingEntity = [Companies MR_findFirstByAttribute:@"id_company" withValue:idCompany];
             
             //...if not, create a new entity
-            if (!existingEntity)
-            {
-                
-                Companies *companiesEntity = [Companies MR_createEntity];
-        
-                companiesEntity.companyname = companyName;
+            
+//            if (!existingEntity)
+//            {
+//                
+//                Companies *companiesEntity = [Companies MR_createEntity];
+//        
+//                companiesEntity.companyname = companyName;
 
                 
 //                shotEntity.shotId = shotId;
 //                shotEntity.name = shotName;
 //                shotEntity.playerName = playerName;
 //                shotEntity.imageUrl = imageUrl;
-            }
+           // }
         }
         
         //Persist created entities to storage
         [MagicalRecord saveUsingCurrentThreadContextWithBlock:nil completion:^(BOOL success, NSError *error) {
             
             //Fetch all stored entities &amp; reload tableView
-            companiesArray = [Companies MR_findAll];
+           // companiesArray = [Companies MR_findAll];
             [self.tableView reloadData];
         }];
                                                            
@@ -198,7 +201,7 @@
 
     
     
-    companiesArray = [Companies MR_findAll];
+   // companiesArray = [Companies MR_findAll];
     
     [self.tableView reloadData];
     
